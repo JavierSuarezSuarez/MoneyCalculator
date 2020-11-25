@@ -7,10 +7,10 @@ public class ExchangeRate {
     private final Currency to;
     private final double rate;
     
-    public ExchangeRate(Currency from, Currency to) {
+    public ExchangeRate(Currency from, Currency to, double rate) {
         this.from = from;
         this.to = to;
-        this.rate = getExchangeRate(from.getIsoCode(), to.getIsoCode());
+        this.rate = rate;
     }
     
     public Currency getFrom() {
@@ -25,11 +25,6 @@ public class ExchangeRate {
         return rate;
     }
     
-    private static Double getExchangeRate(String from, String to) {
-       String line = "('USD_EUR':{'val':0.860155} 'GBP_EUR':{'val':0.860155} 'CMF_EUR':{'val':0.860155})";
-       line = "{'".concat(line.substring(line.indexOf(from)));
-       String processed_line = line.substring(line.indexOf(to) + 12, line.indexOf("}"));
-       return Double.parseDouble(processed_line);
-    }
+    
 
 }
